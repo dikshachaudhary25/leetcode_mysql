@@ -1,0 +1,1 @@
+select r.contest_id, ifnull(round(count(distinct r.user_id)*100.0/(select count(distinct u.user_id) from Users u),2),0) as percentage from Users u join Register r on u.user_id = r.user_id group by r.contest_id order by percentage desc , r.contest_id asc;
